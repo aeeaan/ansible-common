@@ -1,2 +1,4 @@
 ---
-# tasks file for common
+- name: configure yum repos
+  include: repos.yml
+
