@@ -8,6 +8,7 @@ Role Variables
 | Variable                              | Default                       | Notes                                         |
 | :---                                  | :---                          | :---                                          |
 | common_install_correcthorse           | false                         | install correcthorse packagecloud repo	|
+| common_epel_exclude			| ''				| exclude epel pkgs - useful if using upstream repos |
 
 Example Playbook
 ----------------
