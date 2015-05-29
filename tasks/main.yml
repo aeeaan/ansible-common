@@ -14,3 +14,9 @@
   when: ansible_distribution_major_version|int > 6
   tags:
     - firewall
+
+- name: install development tools
+  yum: name="@Development Tools" state=present
+  when: common_development_tools
+  tags:
+    - packages

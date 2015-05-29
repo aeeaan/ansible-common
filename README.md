@@ -9,6 +9,7 @@ Role Variables
 | :---                                  | :---                          | :---                                          |
 | common_install_correcthorse           | false                         | install correcthorse packagecloud repo	|
 | common_epel_exclude			| ''				| exclude epel pkgs - useful if using upstream repos |
+| common_development_tools		| false				| yum groupinstall "Development Tools"	       |
 
 Example Playbook
 ----------------
