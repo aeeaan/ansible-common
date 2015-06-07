@@ -2,3 +2,4 @@
 common_install_correcthorse: false
 common_epel_exclude: ''
 common_development_tools: false
+common_extra_packages: []

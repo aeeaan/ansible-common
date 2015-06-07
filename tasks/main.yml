@@ -20,3 +20,7 @@
   when: common_development_tools
   tags:
     - packages
+
+- name: install extra packages
+  yum: name={{ item }} state=present
+  when: common_extra_packages|length > 0
