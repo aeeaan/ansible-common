@@ -5,14 +5,8 @@
     - repos
     - packages
 
-- name: template epel config
-  template: src=epel.repo.j2 dest=/etc/yum.repos.d/epel.repo owner=root group=root mode=0644
-  tags:
-    - repos
-    - packages
-
 - name: install epel-release
-  yum: name=epel-release state=present
+  yum: name="https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm" state=present
   tags:
     - repos
     - packages
@@ -23,14 +17,16 @@
     - repos
     - packages
 
-- name: template ius config
-  template: src=ius.repo.j2 dest=/etc/yum.repos.d/ius.repo owner=root group=root mode=0644
+- name: install ius release for centos
+  yum: name="https://centos{{ ansible_distribution_major_version }}.iuscommunity.org/ius-release.rpm" state=present
+  when: ansible_distribution == 'CentOS'
   tags:
     - repos
     - packages
 
-- name: install ius release
-  yum: name=ius-release state=present
+- name: install ius release for rhel
+  yum: name="https://rhel{{ ansible_distribution_major_version }}.iuscommunity.org/ius-release.rpm" state=present
+  when: ansible_distribution != 'CentOS'
   tags:
     - repos
     - packages
