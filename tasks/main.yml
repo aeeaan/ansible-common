@@ -27,4 +27,5 @@
 
 - name: install extra packages
   yum: name={{ item }} state=present
+  with_items: common_extra_packages
   when: common_extra_packages|length > 0
