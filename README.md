@@ -7,6 +7,7 @@ Role Variables
 --------------
 | Variable                              | Default                       | Notes                                         |
 | :---                                  | :---                          | :---                                          |
+| common_install_webtatic		| false				| install webtatic repo				|
 | common_install_correcthorse           | false                         | install correcthorse packagecloud repo	|
 | common_epel_exclude			| ''				| exclude epel pkgs - useful if using upstream repos |
 | common_development_tools		| false				| yum groupinstall "Development Tools"	       |

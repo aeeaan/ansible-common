@@ -1,4 +1,5 @@
 ---
+common_install_webtatic: false
 common_install_correcthorse: false
 common_epel_exclude: ''
 common_development_tools: false
