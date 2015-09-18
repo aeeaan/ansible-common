@@ -2,7 +2,7 @@
 name=correcthorse_batterystaple
 baseurl=https://packagecloud.io/correcthorse/batterystaple/el/{{ ansible_distribution_major_version }}/$basearch
 repo_gpgcheck=0
-gpgcheck=1
+gpgcheck=0
 enabled=1
 gpgkey=https://packagecloud.io/gpg.key
 sslverify=1
@@ -12,7 +12,7 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 name=correcthorse_batterystaple-source
 baseurl=https://packagecloud.io/correcthorse/batterystaple/el/{{ ansible_distribution_major_version }}/SRPMS
 repo_gpgcheck=0
-gpgcheck=1
+gpgcheck=0
 enabled=1
 gpgkey=https://packagecloud.io/gpg.key
 sslverify=1
