@@ -56,6 +56,14 @@
 - name: install correcthorse
   template: src=correcthorse_batterystaple.repo.j2 dest=/etc/yum.repos.d/correcthorse_batterystaple.repo owner=root group=root mode=0644
   when: common_install_correcthorse == true
+  register: correcthorse_repo
+  tags:
+    - repos
+    - packages
+
+- name: accept packagecloud key and update cache
+  command: yum -q makecache -y
+  when: correcthorse_repo|changed
   tags:
     - repos
     - packages
