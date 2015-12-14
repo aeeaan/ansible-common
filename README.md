@@ -7,7 +7,8 @@ Role Variables
 --------------
 | Variable                              | Default                       | Notes                                         |
 | :---                                  | :---                          | :---                                          |
-| common_install_ius			| true				| install ius repo				|
+| common_install_epel			| true				| install epel repo				|
+| common_install_ius			| true				| install ius repo, will force epel to install  |
 | common_install_webtatic		| false				| install webtatic repo				|
 | common_install_correcthorse           | false                         | install correcthorse packagecloud repo	|
 | common_epel_exclude			| ''				| exclude epel pkgs - useful if using upstream repos |
