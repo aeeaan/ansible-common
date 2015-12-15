@@ -4,7 +4,9 @@
 
 - name: install selinux management dependency
   yum: name=libsemanage-python state=present
-  when: ansible_selinux.status == 'enabled'
+  tags:
+    - selinux
+    - packages
 
 - name: install firewalld
   yum: name=firewalld state=present
