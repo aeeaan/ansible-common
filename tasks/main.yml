@@ -2,6 +2,12 @@
 - name: configure yum repos
   include: repos.yml
 
+- name: install selinux fact dependency
+  yum: name=libselinux-python state=present
+  tags:
+    - selinux
+    - packages
+
 - name: install selinux management dependency
   yum: name=libsemanage-python state=present
   tags:
