@@ -27,13 +27,15 @@
   tags:
     - firewall
 
+- name: install extra packages
+  yum: name={{ item }} state=present
+  with_items: "{{ common_extra_packages }}"
+  when: common_extra_packages|length > 0
+  tags:
+    - packages
+
 - name: install development tools
   yum: name="@Development Tools" state=present
   when: common_development_tools
   tags:
     - packages
-
-- name: install extra packages
-  yum: name={{ item }} state=present
-  with_items: "{{ common_extra_packages }}"
-  when: common_extra_packages|length > 0
