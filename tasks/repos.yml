@@ -93,7 +93,7 @@
 
 - name: accept packagecloud key and update cache
   command: yum -q makecache -y
-  when: correcthorse_repo|changed
+  when: correcthorse_repo is changed
   tags:
     - repos
     - packages
