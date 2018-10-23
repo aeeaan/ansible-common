@@ -28,8 +28,7 @@
     - firewall
 
 - name: install extra packages
-  yum: name={{ item }} state=present
-  with_items: "{{ common_extra_packages }}"
+  yum: name={{ common_extra_packages }} state=present
   when: common_extra_packages|length > 0
   tags:
     - packages
