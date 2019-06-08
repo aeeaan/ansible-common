@@ -35,6 +35,6 @@
 
 - name: install development tools
   yum: name="@Development Tools" state=present
-  when: common_development_tools
+  when: common_development_tools|bool
   tags:
     - packages
