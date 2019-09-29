@@ -1,0 +1,4 @@
+---
+_common_libselinux: python3-libselinux
+_common_libsemanage: python3-libsemanage
+_common_cryptography: python3-cryptography

@@ -1,41 +1,30 @@
 ---
+- name: gather os specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_os_family }}-{{ ansible_distribution_major_version}}.yml"
+    - "{{ ansible_os_family }}.yml"
+  tags: vars
+
 - name: configure yum repos
   include: repos.yml
 
 - name: install selinux fact dependency
-  yum: name=libselinux-python state=present
+  yum: name="{{ _common_libselinux }}" state=present
   tags:
     - selinux
     - packages
 
 - name: install selinux management dependency
-  yum: name=libsemanage-python state=present
-  when: ansible_distribution_major_version|int < 8
-  tags:
-    - selinux
-    - packages
-
-- name: install selinux management dependency
-  yum: name=python3-libselinux state=present
-  when: ansible_distribution_major_version|int > 7
+  yum: name="{{ _common_libsemanage }}" state=present
   tags:
     - selinux
     - packages
 
 - name: ensure python crypto is installed
   yum:
-    name: python2-cryptography
+    name: "{{ _common_cryptography }}"
     state: present
-  when: ansible_distribution_major_version|int < 8
-  tags:
-    - hitch
-    - packages
-
-- name: ensure python crypto is installed
-  yum:
-    name: python3-cryptography
-    state: present
-  when: ansible_distribution_major_version|int > 7
   tags:
     - hitch
     - packages
