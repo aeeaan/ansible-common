@@ -14,22 +14,15 @@
     - packages
 
 - name: install ius key
-  rpm_key: key=http://dl.iuscommunity.org/pub/ius/IUS-COMMUNITY-GPG-KEY state=present
-  when: common_install_ius == true
+  rpm_key: key=https://repo.ius.io/RPM-GPG-KEY-IUS-{{ ansible_distribution_major_version }} state=present
+  when: common_install_ius == true and ansible_distribution_major_version < 8
   tags:
     - repos
     - packages
 
-- name: install ius release for centos
-  yum: name="https://centos{{ ansible_distribution_major_version }}.iuscommunity.org/ius-release.rpm" state=present
-  when: common_install_ius == true and ansible_distribution == 'CentOS'
-  tags:
-    - repos
-    - packages
-
-- name: install ius release for rhel
-  yum: name="https://rhel{{ ansible_distribution_major_version }}.iuscommunity.org/ius-release.rpm" state=present
-  when: common_install_ius == true and ansible_distribution != 'CentOS'
+- name: install ius release
+  yum: name="https://repo.ius.io/ius-release-el{{ ansible_distribution_major_version }}.rpm" state=present
+  when: common_install_ius == true and ansible_distribution_major_version < 8
   tags:
     - repos
     - packages
