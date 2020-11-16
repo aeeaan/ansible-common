@@ -1,4 +1,0 @@
----
-_common_libselinux: libselinux-python
-_common_libsemanage: libsemanage-python
-_common_cryptography: python2-cryptography
