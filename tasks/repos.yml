@@ -15,14 +15,14 @@
 
 - name: install ius key
   rpm_key: key=https://repo.ius.io/RPM-GPG-KEY-IUS-{{ ansible_distribution_major_version }} state=present
-  when: common_install_ius == true and ansible_distribution_major_version < 8
+  when: common_install_ius == true and ansible_distribution_major_version|int < 8
   tags:
     - repos
     - packages
 
 - name: install ius release
   yum: name="https://repo.ius.io/ius-release-el{{ ansible_distribution_major_version }}.rpm" state=present
-  when: common_install_ius == true and ansible_distribution_major_version < 8
+  when: common_install_ius == true and ansible_distribution_major_version|int < 8
   tags:
     - repos
     - packages
