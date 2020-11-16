@@ -1,14 +1,7 @@
 ---
-- name: install epel key
-  rpm_key: key=http://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }} state=present
-  when: common_install_epel == true or common_install_ius == true
-  tags:
-    - repos
-    - packages
-
 - name: install epel-release
-  yum: name="https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm" state=present
-  when: common_install_epel == true or common_install_ius == true
+  yum: name=epel-release state=present
+  when: common_install_epel
   tags:
     - repos
     - packages
