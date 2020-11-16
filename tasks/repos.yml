@@ -27,34 +27,6 @@
     - repos
     - packages
 
-- name: install webtatic key
-  rpm_key: key=https://mirror.webtatic.com/yum/RPM-GPG-KEY-webtatic-el7
-  when: common_install_webtatic == true and ansible_distribution_major_version == "7"
-  tags:
-    - repos
-    - packages
-
-- name: install webtatic key for 5/6
-  rpm_key: key=https://mirror.webtatic.com/yum/RPM-GPG-KEY-webtatic-andy
-  when: common_install_webtatic == true and ansible_distribution_major_version|int < 7
-  tags:
-    - repos
-    - packages
-
-- name: install webtatic-release
-  yum: name="https://mirror.webtatic.com/yum/el7/webtatic-release.rpm" state=present
-  when: common_install_webtatic == true and ansible_distribution_major_version == "7"
-  tags:
-    - repos
-    - packages
-
-- name: install webtatic-release for 5/6
-  yum: name="https://mirror.webtatic.com/yum/el{{ ansible_distribution_major_version }}/latest.rpm" state=present
-  when: common_install_webtatic == true and ansible_distribution_major_version|int < 7
-  tags:
-    - repos
-    - packages
-
 - name: install packagecloud key
   rpm_key: key=https://packagecloud.io/gpg.key state=present
   when: common_install_correcthorse == true

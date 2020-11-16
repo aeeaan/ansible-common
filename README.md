@@ -9,7 +9,6 @@ Role Variables
 | :---                                  | :---                          | :---                                          |
 | common_install_epel			| true				| install epel repo				|
 | common_install_remi			| false				| install Remi's repo - only safe repo enabled	|
-| common_install_webtatic		| false				| install webtatic repo				|
 | common_install_correcthorse           | false                         | install correcthorse packagecloud repo	|
 | common_epel_exclude			| ''				| exclude epel pkgs - useful if using upstream repos |
 | common_development_tools		| false				| yum groupinstall "Development Tools"	       |
