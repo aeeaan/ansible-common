@@ -1,6 +1,19 @@
 ---
+- name: Enable CentOS8 PowerTools repo
+  lineinfile: 
+    path: /etc/yum.repos.d/CentOS-PowerTools.repo
+    create: false
+    regexp: enabled=
+    line: enabled=1
+  when: ansible_distribution_major_version == "8" and (common_install_epel or common_install_powertools)
+  tags:
+    - repos
+    - packages
+
 - name: install epel-release
-  yum: name=epel-release state=present
+  yum:
+    name: epel-release
+    state: present
   when: common_install_epel
   tags:
     - repos
