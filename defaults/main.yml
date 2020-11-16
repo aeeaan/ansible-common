@@ -2,6 +2,5 @@
 common_install_epel: true
 common_install_remi: false
 common_install_correcthorse: false
-common_epel_exclude: ''
 common_development_tools: false
 common_extra_packages: []
