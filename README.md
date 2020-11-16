@@ -8,7 +8,6 @@ Role Variables
 | Variable                              | Default                       | Notes                                         |
 | :---                                  | :---                          | :---                                          |
 | common_install_epel			| true				| install epel repo				|
-| common_install_remi			| false				| install Remi's repo - only safe repo enabled	|
 | common_development_tools		| false				| yum groupinstall "Development Tools"	       |
 | common_extra_packages			| []				| add extra packages to install		       |
 

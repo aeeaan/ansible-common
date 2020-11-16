@@ -1,5 +1,4 @@
 ---
 common_install_epel: true
-common_install_remi: false
 common_development_tools: false
 common_extra_packages: []
