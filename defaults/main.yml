@@ -1,6 +1,5 @@
 ---
 common_install_epel: true
-common_install_ius: true
 common_install_remi: false
 common_install_webtatic: false
 common_install_correcthorse: false
