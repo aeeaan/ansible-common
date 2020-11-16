@@ -6,17 +6,26 @@
     - "{{ ansible_os_family }}.yml"
   tags: vars
 
+- name: Ensure dnf-plugins is installed
+  yum:
+    name: dnf-plugins-core
+    state: present
+  
 - name: configure yum repos
   include: repos.yml
 
 - name: install selinux fact dependency
-  yum: name="{{ _common_libselinux }}" state=present
+  yum:
+    name: "{{ _common_libselinux }}"
+    state: present
   tags:
     - selinux
     - packages
 
 - name: install selinux management dependency
-  yum: name="{{ _common_libsemanage }}" state=present
+  yum:
+    name: "{{ _common_libsemanage }}"
+    state: present
   tags:
     - selinux
     - packages
@@ -30,26 +39,35 @@
     - packages
 
 - name: install firewalld
-  yum: name=firewalld state=present
+  yum:
+    name: firewalld
+    state: present
   when: ansible_distribution_major_version|int > 6
   tags:
     - firewall
     - packages
 
 - name: ensure firewalld is started
-  service: name=firewalld state=started enabled=yes
+  service:
+    name: firewalld
+    state: started
+    enabled: yes
   when: ansible_distribution_major_version|int > 6
   tags:
     - firewall
 
 - name: install extra packages
-  yum: name={{ common_extra_packages }} state=present
+  yum:
+    name: "{{ common_extra_packages }}" 
+    state: present
   when: common_extra_packages|length > 0
   tags:
     - packages
 
 - name: install development tools
-  yum: name="@Development Tools" state=present
+  yum:
+    name: "@Development Tools"
+    state: present
   when: common_development_tools|bool
   tags:
     - packages
