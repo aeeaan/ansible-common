@@ -19,3 +19,21 @@
     - repos
     - packages
 
+- block:
+    - name: install correcthorse key
+      rpm_key:
+        key: https://download.correct.horse/correcthorse/RPM-GPG-KEY-CORRECTHORSE
+        state: present
+
+    - name: install correcthorse repo
+      template:
+        src: correcthorse.repo.j2
+        dest: /etc/yum.repos.d/correcthorse.repo
+        owner: root
+        group: root
+        mode: 0644
+
+  when: common_install_correcthorse
+  tags:
+    - repos
+    - packages
